@@ -64,10 +64,7 @@
         <ListView
             android:id="@+id/listaProductos"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="15dp">
-
-        </ListView>
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 
@@ -83,27 +80,14 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/botonAgregarProducto"
+            android:id="@+id/botonCancelarProducto"
             android:layout_width="125dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="50dp"
-            android:backgroundTint="#E8E3E5"
-            android:text="@string/boton_productoBuscar"
-            android:textColor="#434343"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <Button
-            android:id="@+id/botonBuscarProducto"
-            android:layout_width="125dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
             android:backgroundTint="#42b6ad"
             android:onClick="irAgregarProducto"
             android:text="@string/boton_productoAgregar"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
