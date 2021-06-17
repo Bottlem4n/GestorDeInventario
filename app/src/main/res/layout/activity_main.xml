@@ -20,7 +20,7 @@
         tools:layout_editor_absoluteX="-16dp">
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/tituloPrincipal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/titulo_principal"
@@ -35,17 +35,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.22"
-        tools:layout_editor_absoluteX="0dp">
+        app:layout_constraintVertical_bias="0.22">
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/boton_productos"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_margin="50dp"
+            android:layout_margin="35dp"
+            android:onClick="irProductos"
             android:text="@string/boton_productos"
-            app:layout_constraintBottom_toTopOf="@+id/button9"
+            app:layout_constraintBottom_toTopOf="@+id/boton_marcas"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
@@ -53,25 +56,25 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <Button
-            android:id="@+id/button9"
+            android:id="@+id/boton_marcas"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_margin="50dp"
+            android:layout_margin="35dp"
             android:text="@string/boton_marcas"
-            app:layout_constraintBottom_toTopOf="@+id/button10"
+            app:layout_constraintBottom_toTopOf="@+id/boton_categorias"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/button10"
+            android:id="@+id/boton_categorias"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_margin="50dp"
+            android:layout_margin="35dp"
             android:text="@string/boton_categorias"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
