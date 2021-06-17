@@ -1,7 +1,25 @@
 <resources>
+    <!--Menu Principal-->
     <string name="app_name">Gestor de Inventario</string>
     <string name="titulo_principal">Menú Principal</string>
     <string name="boton_productos">Productos</string>
     <string name="boton_marcas">Marcas</string>
     <string name="boton_categorias">Categorias</string>
+    <string name="boton_menuPrincipal">Menu Principal</string>
+
+    <!--Lista Productos-->
+    <string name="titulo_Productos">Productos</string>
+    <string name="boton_productoAgregar">Agregar</string>
+    <string name="boton_productoBuscar">Buscar</string>
+
+    <!--Agregar Producto-->
+    <string name="titulo_AgregarProducto">Agregar Producto</string>
+    <string name="nombre_producto">Nombre</string>
+    <string name="detalles_producto">Detalles</string>
+    <string name="cantidad_productos">Cantidad</string>
+    <string name="precio_prductos">Precio (MX)</string>
+    <string name="marca_producto">Marca</string>
+    <string name="categoria_producto">Categoria</string>
+    <string name="boton_cancelar">Cancelar</string>
+    <string name="boton_guardar">Guardar</string>
 </resources>
