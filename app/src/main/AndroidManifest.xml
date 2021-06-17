@@ -10,8 +10,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GestorDeInventario">
-        <activity android:name=".MostrarDetalles"/>
-        <activity android:name=".AgregarProducto"/>
+        <activity android:name=".Categorias"/>
+        <activity android:name=".Agregar_Marca" />
+        <activity android:name=".Marcas" />
+        <activity android:name=".MostrarDetalles" />
+        <activity android:name=".AgregarProducto" />
         <activity android:name=".Productos" />
         <activity android:name=".MainActivity">
             <intent-filter>

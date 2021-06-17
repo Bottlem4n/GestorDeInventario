@@ -21,4 +21,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(productos);
     }
 
+    public void irMarcas(View view){
+        Intent marcas = new Intent(this, Marcas.class);
+        startActivity(marcas);
+    }
+
+    public void irCategorias(View view){
+        Intent categorias = new Intent(this, Categorias.class);
+        startActivity(categorias);
+    }
+
 }

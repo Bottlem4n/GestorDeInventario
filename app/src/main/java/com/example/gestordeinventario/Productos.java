@@ -6,10 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -44,9 +42,6 @@ public class Productos extends AppCompatActivity {
     public void cargarProductos(){
         ArrayList<String> listaProductos = new ArrayList<>();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaProductos);
-        listView.setAdapter(adapter);
-
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "inventario", null,1);
         SQLiteDatabase BaseDeDatos = admin.getReadableDatabase();
 
@@ -57,6 +52,9 @@ public class Productos extends AppCompatActivity {
                 listaProductos.add(registro);
             }while(cursor.moveToNext());
         }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaProductos);
+        listView.setAdapter(adapter);
 
         cursor.close();
     }
