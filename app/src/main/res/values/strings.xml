@@ -10,7 +10,16 @@
     <!--Lista Productos-->
     <string name="titulo_Productos">Productos</string>
     <string name="boton_productoAgregar">Agregar</string>
-    <string name="boton_productoBuscar">Buscar</string>
+
+    <!--Lista Marcas-->
+    <string name="titulo_Marcas">Marcas</string>
+    <string name="titulo_AgregarMarca">Agregar Marca</string>
+    <string name="nombre_marca">Nombre</string>
+    <string name="boton_marcaAgregar">Agregar</string>
+
+    <!--Lista Categorias-->
+    <string name="titulo_Categorias">Categorias</string>
+
 
     <!--Agregar Producto-->
     <string name="titulo_AgregarProducto">Agregar Producto</string>

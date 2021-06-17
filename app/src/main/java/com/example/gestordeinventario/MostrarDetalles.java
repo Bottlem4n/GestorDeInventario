@@ -1,8 +1,10 @@
 package com.example.gestordeinventario;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -18,12 +21,14 @@ import java.util.ArrayList;
 
 public class MostrarDetalles extends AppCompatActivity {
 
+
     private int clave_producto;
     private EditText cve_producto;
     private Spinner sMarcas, sCategorias;
     private int posicionMarca, posicionCategoria;
     private EditText nombreProducto, detalleProducto, cantidadProducto, precioProducto;
     private String clave;
+    private Button botonDialogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +78,19 @@ public class MostrarDetalles extends AppCompatActivity {
         cargarMarcas();
         cargarCategorias();
         cargarDetalle();
+
+        botonDialogo = findViewById(R.id.botonEliminarProducto);
+        botonDialogo.setOnClickListener(v -> {
+            AlertDialog.Builder alerta = new AlertDialog.Builder(MostrarDetalles.this);
+            alerta.setMessage("¿Deseas eliminar este producto?")
+                    .setCancelable(false)
+                    .setPositiveButton("Si", (dialog, which) -> eliminarProducto())
+            .setNegativeButton("No", (dialog, which) -> dialog.cancel());
+
+            AlertDialog titulo = alerta.create();
+            titulo.setTitle("Confirmación de Eliminar");
+            titulo.show();
+        });
 
     }
 
@@ -198,13 +216,15 @@ public class MostrarDetalles extends AppCompatActivity {
 
 
     }
-    public void eliminarProducto(View view){
+    public void eliminarProducto(){
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"inventario",null, 1);
         SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
 
         String claveEliminar = clave;
 
         BaseDeDatos.delete("productos","clave_producto=?", new String[]{claveEliminar});
+        BaseDeDatos.close();
+        Toast.makeText(MostrarDetalles.this, "Eliminado",Toast.LENGTH_SHORT).show();
         regresarProductos();
     }
 

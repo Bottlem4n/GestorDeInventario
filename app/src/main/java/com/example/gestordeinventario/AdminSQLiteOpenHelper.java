@@ -23,7 +23,7 @@ public class AdminSQLiteOpenHelper  extends SQLiteOpenHelper {
         BaseDeDatos.execSQL("INSERT INTO categorias(nombre,descripcion) VALUES ('Farmacia','Vitaminas y Cuidado Personal')");
 
         BaseDeDatos.execSQL("INSERT INTO marcas(clave_marca,nombre) VALUES (1,'Coca-Cola')");
-        BaseDeDatos.execSQL("INSERT INTO marcas(nombre) VALUES ('Sabritas')");
+        BaseDeDatos.execSQL("INSERT INTO marcas(nombre) VALUES ('Pepsico')");
 
         BaseDeDatos.execSQL("INSERT INTO productos(clave_producto,nombre, detalle,cantidad,precio,clave_marca,clave_categoria) VALUES (700,'Coca-Cola', '600ml',10,13.5,1,1)");
 

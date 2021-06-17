@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Productos">
+    tools:context=".Categorias">
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -33,7 +33,7 @@
             android:id="@+id/tituloPrincipal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/titulo_Productos"
+            android:text="@string/titulo_Categorias"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="30sp"
@@ -43,16 +43,15 @@
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="300dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
         <ListView
-            android:id="@+id/listaProductos"
+            android:id="@+id/listaCategorias"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="15dp">
@@ -60,31 +59,5 @@
         </ListView>
 
     </LinearLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <Button
-            android:id="@+id/botonAgregarProducto"
-            android:layout_width="125dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#42b6ad"
-            android:onClick="irAgregarProducto"
-            android:text="@string/boton_productoAgregar"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
