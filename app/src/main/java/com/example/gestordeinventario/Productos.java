@@ -6,15 +6,18 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import java.security.PrivateKey;
 import java.util.ArrayList;
 
 public class Productos extends AppCompatActivity {
 
     private ListView listView;
+    private Object posicionItem;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +25,18 @@ public class Productos extends AppCompatActivity {
         setContentView(R.layout.activity_productos);
 
         listView = findViewById(R.id.listaProductos);
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+
+            posicionItem = parent.getItemIdAtPosition(position);
+            int posItem = Integer.parseInt(posicionItem.toString());
+            posItem +=700;
+
+            Intent mostrarDetalles = new Intent(getApplicationContext(), MostrarDetalles.class);
+            mostrarDetalles.putExtra("clave_producto",posItem);
+            startActivity(mostrarDetalles);
+
+            //Toast.makeText(parent.getContext(), "Posicion " + posItem ,Toast.LENGTH_SHORT).show();
+        });
         cargarProductos();
 
     }

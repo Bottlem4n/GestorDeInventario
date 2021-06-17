@@ -22,4 +22,10 @@
     <string name="categoria_producto">Categoria</string>
     <string name="boton_cancelar">Cancelar</string>
     <string name="boton_guardar">Guardar</string>
+
+    <!--Mostrar Detalles-->
+    <string name="titulo_detalles">Detalles</string>
+    <string name="clave_producto_detalle">Clave</string>
+    <string name="boton_eliminar_producto">Eliminar</string>
+    <string name="boton_actualizar_producto">Actualizar</string>
 </resources>

@@ -16,17 +16,27 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class AgregarProducto extends AppCompatActivity {
+public class MostrarDetalles extends AppCompatActivity {
 
+    private int clave_producto;
+    private EditText cve_producto;
     private Spinner sMarcas, sCategorias;
     private int posicionMarca, posicionCategoria;
     private EditText nombreProducto, detalleProducto, cantidadProducto, precioProducto;
+    private String clave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_agregar_producto);
+        setContentView(R.layout.activity_mostrar_detalles);
 
+        Bundle mensaje = getIntent().getExtras();
+        clave_producto = mensaje.getInt("clave_producto");
+        //Toast.makeText(this, "Clave:  " + clave_producto ,Toast.LENGTH_SHORT).show();
+
+        clave = String.valueOf(clave_producto);
+        cve_producto = findViewById(R.id.claveProducto);
+        cve_producto.setText(String.valueOf(clave_producto));
         nombreProducto = findViewById(R.id.nombreProducto);
         detalleProducto = findViewById(R.id.detallesProducto);
         cantidadProducto = findViewById(R.id.cantidadProducto);
@@ -59,8 +69,30 @@ public class AgregarProducto extends AppCompatActivity {
 
             }
         });
+
         cargarMarcas();
         cargarCategorias();
+        cargarDetalle();
+
+    }
+
+
+    public void cargarDetalle(){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"inventario",null, 1);
+        SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
+        Cursor fila = BaseDeDatos.rawQuery("SELECT * FROM productos WHERE clave_producto="+ clave, null);
+        if(fila.moveToFirst()){
+            nombreProducto.setText(fila.getString(1));
+            detalleProducto.setText(fila.getString(2));
+            cantidadProducto.setText(fila.getString(3));
+            precioProducto.setText(fila.getString(4));
+            sMarcas.setSelection(fila.getInt(5));
+            sCategorias.setSelection(fila.getInt(6));
+
+        }
+
+        fila.close();
+
     }
 
     public void cargarMarcas(){
@@ -82,7 +114,7 @@ public class AgregarProducto extends AppCompatActivity {
         BaseDeDatos.close();
         cursorMarcas.close();
 
-        ArrayAdapter <String> adapterMarcas = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item,listaMarcas);
+        ArrayAdapter<String> adapterMarcas = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item,listaMarcas);
         sMarcas.setAdapter(adapterMarcas);
     }
 
@@ -109,15 +141,14 @@ public class AgregarProducto extends AppCompatActivity {
         sCategorias.setAdapter(adapterMarcas);
     }
 
-    public void cancelarAgregar(View view){
+    public void cancelarActualizar(View view){
         Intent productos = new Intent(this, Productos.class);
         startActivity(productos);
     }
 
-    public void guardarAgregar(View view){
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "inventario", null, 1);
+    public void actualizarProducto(View view){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"inventario",null, 1);
         SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
-
 
         String nombre = nombreProducto.getText().toString();
         String detalle = detalleProducto.getText().toString();
@@ -158,29 +189,27 @@ public class AgregarProducto extends AppCompatActivity {
             registro.put("clave_categoria", categoria);
 
 
-            BaseDeDatos.insert("productos", null, registro);
+            BaseDeDatos.update("productos", registro, "clave_producto="+clave ,null);
             BaseDeDatos.close();
 
-            Toast.makeText( this, "Producto Guardado", Toast.LENGTH_SHORT).show();
-            limpiar();
+            Toast.makeText( this, "Producto Actualizado", Toast.LENGTH_SHORT).show();
             regresarProductos();
         }
+
+
     }
+    public void eliminarProducto(View view){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"inventario",null, 1);
+        SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
 
-    public void limpiar(){
-        nombreProducto.setText("");
-        detalleProducto.setText("");
-        cantidadProducto.setText("");
-        precioProducto.setText("");
+        String claveEliminar = clave;
 
-        sMarcas.setSelection(0);
-        sCategorias.setSelection(0);
+        BaseDeDatos.delete("productos","clave_producto=?", new String[]{claveEliminar});
+        regresarProductos();
     }
 
     public void regresarProductos(){
         Intent listaProductos = new Intent(this, Productos.class);
         startActivity(listaProductos);
     }
-
-
 }
