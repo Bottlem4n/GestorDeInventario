@@ -26,7 +26,7 @@ public class MostrarDetalles extends AppCompatActivity {
     private Spinner sMarcas, sCategorias;
     private int posicionMarca, posicionCategoria;
     private EditText nombreProducto, detalleProducto, cantidadProducto, precioProducto;
-    private String clave;
+    private String clave, clave_intercambio;
     private Button botonDialogo;
 
     @Override
@@ -35,8 +35,9 @@ public class MostrarDetalles extends AppCompatActivity {
         setContentView(R.layout.activity_mostrar_detalles);
 
         Bundle mensaje = getIntent().getExtras();
-        clave_producto = mensaje.getInt("clave_producto");
-        //Toast.makeText(this, "Clave:  " + clave_producto ,Toast.LENGTH_SHORT).show();
+        clave_intercambio = mensaje.getString("clave_producto");
+        clave_producto = Integer.parseInt(clave_intercambio);
+        Toast.makeText(this, "Clave:  " + clave_intercambio ,Toast.LENGTH_SHORT).show();
 
         clave = String.valueOf(clave_producto);
         cve_producto = findViewById(R.id.claveProducto);

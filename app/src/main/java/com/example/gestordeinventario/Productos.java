@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -15,6 +16,7 @@ public class Productos extends AppCompatActivity {
 
     private ListView listView;
     private Object posicionItem;
+    private ArrayList<String> listaClavesProductos = new ArrayList<>();
 
 
     @Override
@@ -27,13 +29,13 @@ public class Productos extends AppCompatActivity {
 
             posicionItem = parent.getItemIdAtPosition(position);
             int posItem = Integer.parseInt(posicionItem.toString());
-            posItem +=700;
+            String claveIntercambio = listaClavesProductos.get(posItem);
 
             Intent mostrarDetalles = new Intent(getApplicationContext(), MostrarDetalles.class);
-            mostrarDetalles.putExtra("clave_producto",posItem);
+            mostrarDetalles.putExtra("clave_producto",claveIntercambio);
             startActivity(mostrarDetalles);
 
-            //Toast.makeText(parent.getContext(), "Posicion " + posItem ,Toast.LENGTH_SHORT).show();
+            //Toast.makeText(parent.getContext(), "Posicion " + claveIntercambio ,Toast.LENGTH_SHORT).show();
         });
         cargarProductos();
 
@@ -45,10 +47,13 @@ public class Productos extends AppCompatActivity {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "inventario", null,1);
         SQLiteDatabase BaseDeDatos = admin.getReadableDatabase();
 
-        Cursor cursor = BaseDeDatos.rawQuery("SELECT nombre FROM productos",null);
+        Cursor cursor = BaseDeDatos.rawQuery("SELECT clave_producto, nombre FROM productos",null);
         if(cursor.moveToFirst()){
             do{
-                String registro = cursor.getString(0);
+                String claves = cursor.getString(0);
+                listaClavesProductos.add(claves);
+
+                String registro = cursor.getString(1);
                 listaProductos.add(registro);
             }while(cursor.moveToNext());
         }
