@@ -37,7 +37,7 @@ public class MostrarDetalles extends AppCompatActivity {
         Bundle mensaje = getIntent().getExtras();
         clave_intercambio = mensaje.getString("clave_producto");
         clave_producto = Integer.parseInt(clave_intercambio);
-        Toast.makeText(this, "Clave:  " + clave_intercambio ,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Clave:  " + clave_intercambio ,Toast.LENGTH_SHORT).show();
 
         clave = String.valueOf(clave_producto);
         cve_producto = findViewById(R.id.claveProducto);
