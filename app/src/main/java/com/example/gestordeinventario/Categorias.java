@@ -21,8 +21,9 @@ public class Categorias extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categorias);
 
+        //Vinculamos una las variables con los elementos en XML
         listView = findViewById(R.id.listaCategorias);
-        cargarCategorias();
+        cargarCategorias(); //Carga las Categorias en el Listview
     }
 
     public void cargarCategorias(){
@@ -43,11 +44,11 @@ public class Categorias extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaCategorias);
         listView.setAdapter(adapter);
 
-
+        BaseDeDatos.close();
         cursor.close();
     }
 
-    public void regresarMenu(View view){
+    public void regresarMenu(View view){ //Nos regresa a la Activity Principal
         Intent menuPrincipal = new Intent(this, MainActivity.class);
         startActivity(menuPrincipal);
     }

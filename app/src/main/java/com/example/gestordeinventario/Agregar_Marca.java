@@ -18,16 +18,16 @@ public class Agregar_Marca extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_marca);
-
+        //Vinculamos una las variables con los elementos en XML
         nombreMarca = findViewById(R.id.nombreMarca);
     }
 
-    public void cancelarAgregar(View view){
+    public void cancelarAgregar(View view){ //Nos regresa a la Activity Agregar Marca
         Intent marcas = new Intent(this, Marcas.class);
         startActivity(marcas);
     }
 
-    public void guardarAgregar(View view){
+    public void guardarAgregar(View view){ //Guarda la Marca en la BD
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "inventario", null, 1);
         SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
 
@@ -56,7 +56,7 @@ public class Agregar_Marca extends AppCompatActivity {
         nombreMarca.setText("");
     }
 
-    public void regresarMarcas(){
+    public void regresarMarcas(){ //Nos regresa a la Activity Marcas
         Intent listaMarcas = new Intent(this, Marcas.class);
         startActivity(listaMarcas);
     }

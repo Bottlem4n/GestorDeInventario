@@ -27,6 +27,7 @@ public class AgregarProducto extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_producto);
 
+        //Vinculamos una las variables con los elementos en XML
         nombreProducto = findViewById(R.id.nombreProducto);
         detalleProducto = findViewById(R.id.detallesProducto);
         cantidadProducto = findViewById(R.id.cantidadProducto);
@@ -34,6 +35,7 @@ public class AgregarProducto extends AppCompatActivity {
 
         sMarcas = findViewById(R.id.spinnerMarcas);
 
+        //Agregamos un evento que se dispara cuando se selecciona un elemento del spinner de Marcas
         sMarcas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -48,6 +50,7 @@ public class AgregarProducto extends AppCompatActivity {
 
         sCategorias = findViewById(R.id.spinnerCategorias);
 
+        //Agregamos un evento que se dispara cuando se selecciona un elemento del spinner de Categorias
         sCategorias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -59,8 +62,8 @@ public class AgregarProducto extends AppCompatActivity {
 
             }
         });
-        cargarMarcas();
-        cargarCategorias();
+        cargarMarcas(); //Carga las marcas en su Spinner
+        cargarCategorias(); //Carga las categorias en su Spinner
     }
 
     public void cargarMarcas(){
@@ -167,7 +170,7 @@ public class AgregarProducto extends AppCompatActivity {
         }
     }
 
-    public void limpiar(){
+    public void limpiar(){ //Limpia los Campos
         nombreProducto.setText("");
         detalleProducto.setText("");
         cantidadProducto.setText("");
@@ -177,7 +180,7 @@ public class AgregarProducto extends AppCompatActivity {
         sCategorias.setSelection(0);
     }
 
-    public void regresarProductos(){
+    public void regresarProductos(){ //Nos regresa a la Activity Productos
         Intent listaProductos = new Intent(this, Productos.class);
         startActivity(listaProductos);
     }
